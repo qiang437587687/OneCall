@@ -8,14 +8,19 @@
 
 import UIKit
 
+let ConstStrting = "OneCallEx"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    class var shared: AppDelegate { //搞一个单例。
+        return UIApplication.shared.delegate as! AppDelegate
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        configInitValue()
         return true
     }
 

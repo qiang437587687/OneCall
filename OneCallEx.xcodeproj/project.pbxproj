@@ -12,9 +12,20 @@
 		7E0F15C62041491400F02244 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E0F15C42041491400F02244 /* Main.storyboard */; };
 		7E0F15C82041491400F02244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E0F15C72041491400F02244 /* Assets.xcassets */; };
 		7E0F15CB2041491400F02244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E0F15C92041491400F02244 /* LaunchScreen.storyboard */; };
+		7E773349F0D79E00E1E186BA /* Pods_OneCallEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB3811DD0BF51F3E93F15AD /* Pods_OneCallEx.framework */; };
+		C01588A7204A80190001E5F9 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A5204A80190001E5F9 /* Call.swift */; };
+		C01588A8204A80190001E5F9 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A6204A80190001E5F9 /* CallManager.swift */; };
+		C01588AA204A80430001E5F9 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A9204A80430001E5F9 /* Audio.swift */; };
+		C01588AC204A80A00001E5F9 /* ProviderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588AB204A80A00001E5F9 /* ProviderDelegate.swift */; };
+		C01588AF204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588AD204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift */; };
+		C01588B0204A811C0001E5F9 /* StartCallConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588AE204A811C0001E5F9 /* StartCallConvertible.swift */; };
+		C01588B2204A82360001E5F9 /* CallkitExtensionAppdelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588B1204A82360001E5F9 /* CallkitExtensionAppdelegate.swift */; };
+		C01588B5204A85D40001E5F9 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588B4204A85D40001E5F9 /* Tools.swift */; };
+		C01588C0204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588BF204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E1FC59B63B72798404CCF6E /* Pods-OneCallEx.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneCallEx.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx.debug.xcconfig"; sourceTree = "<group>"; };
 		7E0F15BD2041491400F02244 /* OneCallEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneCallEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E0F15C02041491400F02244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E0F15C22041491400F02244 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +33,19 @@
 		7E0F15C72041491400F02244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E0F15CA2041491400F02244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E0F15CC2041491400F02244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C01588A5204A80190001E5F9 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
+		C01588A6204A80190001E5F9 /* CallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
+		C01588A9204A80430001E5F9 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
+		C01588AB204A80A00001E5F9 /* ProviderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderDelegate.swift; sourceTree = "<group>"; };
+		C01588AD204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSUserActivity+StartCallConvertible.swift"; sourceTree = "<group>"; };
+		C01588AE204A811C0001E5F9 /* StartCallConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartCallConvertible.swift; sourceTree = "<group>"; };
+		C01588B1204A82360001E5F9 /* CallkitExtensionAppdelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallkitExtensionAppdelegate.swift; sourceTree = "<group>"; };
+		C01588B4204A85D40001E5F9 /* Tools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tools.swift; sourceTree = "<group>"; };
+		C01588B6204A91350001E5F9 /* OneCallEx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneCallEx.entitlements; sourceTree = "<group>"; };
+		C01588BF204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraAppdelegateExtension.swift; sourceTree = "<group>"; };
+		C01588C3204AD0770001E5F9 /* OC_Bridge_File.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OC_Bridge_File.h; sourceTree = "<group>"; };
+		C6ADB4AC86B803B323337D7C /* Pods-OneCallEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneCallEx.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx.release.xcconfig"; sourceTree = "<group>"; };
+		EEB3811DD0BF51F3E93F15AD /* Pods_OneCallEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneCallEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +53,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E773349F0D79E00E1E186BA /* Pods_OneCallEx.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14EB6D964B8540844D36A025 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEB3811DD0BF51F3E93F15AD /* Pods_OneCallEx.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		356E68315A1D9D45A5D9268B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0E1FC59B63B72798404CCF6E /* Pods-OneCallEx.debug.xcconfig */,
+				C6ADB4AC86B803B323337D7C /* Pods-OneCallEx.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		7E0F15B42041491400F02244 = {
 			isa = PBXGroup;
 			children = (
 				7E0F15BF2041491400F02244 /* OneCallEx */,
 				7E0F15BE2041491400F02244 /* Products */,
+				356E68315A1D9D45A5D9268B /* Pods */,
+				14EB6D964B8540844D36A025 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +98,57 @@
 		7E0F15BF2041491400F02244 /* OneCallEx */ = {
 			isa = PBXGroup;
 			children = (
+				C01588B6204A91350001E5F9 /* OneCallEx.entitlements */,
+				C01588B7204ACE740001E5F9 /* Agora */,
+				C01588B3204A85C50001E5F9 /* Tools */,
+				C01588A4204A7FEF0001E5F9 /* Callkit */,
+				C01588A3204A7FCF0001E5F9 /* PushKit */,
 				7E0F15C02041491400F02244 /* AppDelegate.swift */,
 				7E0F15C22041491400F02244 /* ViewController.swift */,
 				7E0F15C42041491400F02244 /* Main.storyboard */,
 				7E0F15C72041491400F02244 /* Assets.xcassets */,
 				7E0F15C92041491400F02244 /* LaunchScreen.storyboard */,
 				7E0F15CC2041491400F02244 /* Info.plist */,
+				C01588C3204AD0770001E5F9 /* OC_Bridge_File.h */,
 			);
 			path = OneCallEx;
+			sourceTree = "<group>";
+		};
+		C01588A3204A7FCF0001E5F9 /* PushKit */ = {
+			isa = PBXGroup;
+			children = (
+				C01588B1204A82360001E5F9 /* CallkitExtensionAppdelegate.swift */,
+			);
+			path = PushKit;
+			sourceTree = "<group>";
+		};
+		C01588A4204A7FEF0001E5F9 /* Callkit */ = {
+			isa = PBXGroup;
+			children = (
+				C01588AD204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift */,
+				C01588AE204A811C0001E5F9 /* StartCallConvertible.swift */,
+				C01588A5204A80190001E5F9 /* Call.swift */,
+				C01588A6204A80190001E5F9 /* CallManager.swift */,
+				C01588A9204A80430001E5F9 /* Audio.swift */,
+				C01588AB204A80A00001E5F9 /* ProviderDelegate.swift */,
+			);
+			path = Callkit;
+			sourceTree = "<group>";
+		};
+		C01588B3204A85C50001E5F9 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C01588B4204A85D40001E5F9 /* Tools.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		C01588B7204ACE740001E5F9 /* Agora */ = {
+			isa = PBXGroup;
+			children = (
+				C01588BF204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift */,
+			);
+			path = Agora;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +158,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7E0F15CF2041491400F02244 /* Build configuration list for PBXNativeTarget "OneCallEx" */;
 			buildPhases = (
+				093FA431C65CA868B9E8E741 /* [CP] Check Pods Manifest.lock */,
 				7E0F15B92041491400F02244 /* Sources */,
 				7E0F15BA2041491400F02244 /* Frameworks */,
 				7E0F15BB2041491400F02244 /* Resources */,
+				AD9AF7F2AA39450A53537281 /* [CP] Embed Pods Frameworks */,
+				6741B6A8556542443EEF6C50 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +186,15 @@
 				TargetAttributes = {
 					7E0F15BC2041491400F02244 = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -131,13 +229,78 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		093FA431C65CA868B9E8E741 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneCallEx-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6741B6A8556542443EEF6C50 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AD9AF7F2AA39450A53537281 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
+				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7E0F15B92041491400F02244 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7E0F15C32041491400F02244 /* ViewController.swift in Sources */,
+				C01588B2204A82360001E5F9 /* CallkitExtensionAppdelegate.swift in Sources */,
+				C01588A7204A80190001E5F9 /* Call.swift in Sources */,
 				7E0F15C12041491400F02244 /* AppDelegate.swift in Sources */,
+				C01588AF204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift in Sources */,
+				C01588B0204A811C0001E5F9 /* StartCallConvertible.swift in Sources */,
+				C01588AC204A80A00001E5F9 /* ProviderDelegate.swift in Sources */,
+				C01588A8204A80190001E5F9 /* CallManager.swift in Sources */,
+				C01588AA204A80430001E5F9 /* Audio.swift in Sources */,
+				C01588B5204A85D40001E5F9 /* Tools.swift in Sources */,
+				C01588C0204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,15 +435,29 @@
 		};
 		7E0F15D02041491400F02244 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E1FC59B63B72798404CCF6E /* Pods-OneCallEx.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = OneCallEx/OneCallEx.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = G2ZP7ALGPR;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OneCallEx/Agora/libs",
+				);
 				INFOPLIST_FILE = OneCallEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OneCallEx/Agora/libs",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhangxianqiang.onecall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = OneCallEx/OC_Bridge_File.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -288,15 +465,29 @@
 		};
 		7E0F15D12041491400F02244 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C6ADB4AC86B803B323337D7C /* Pods-OneCallEx.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_ENTITLEMENTS = OneCallEx/OneCallEx.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = NO;
+				DEVELOPMENT_TEAM = G2ZP7ALGPR;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OneCallEx/Agora/libs",
+				);
 				INFOPLIST_FILE = OneCallEx/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OneCallEx/Agora/libs",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zhangxianqiang.onecall;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = OneCallEx/OC_Bridge_File.h;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

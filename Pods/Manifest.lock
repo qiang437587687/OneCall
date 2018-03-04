@@ -1,0 +1,26 @@
+PODS:
+  - AgoraAudio_iOS (2.0.2)
+  - AVOSCloud (8.0.4)
+  - AVOSCloudIM (8.0.4):
+    - AVOSCloud (= 8.0.4)
+    - AVOSCloudIM/_ARC (= 8.0.4)
+    - AVOSCloudIM/_NOARC (= 8.0.4)
+  - AVOSCloudIM/_ARC (8.0.4):
+    - AVOSCloud (= 8.0.4)
+    - AVOSCloudIM/_NOARC (= 8.0.4)
+  - AVOSCloudIM/_NOARC (8.0.4):
+    - AVOSCloud (= 8.0.4)
+
+DEPENDENCIES:
+  - AgoraAudio_iOS
+  - AVOSCloud (= 8.0.4)
+  - AVOSCloudIM (= 8.0.4)
+
+SPEC CHECKSUMS:
+  AgoraAudio_iOS: 5003625255827db33cdd167644aa10df3e5a0e95
+  AVOSCloud: 645f20b77cdcc0622a45c663c1a5735a17d1df27
+  AVOSCloudIM: 182e93f9e6e3ad165c6fd67d8c01d15f561a7538
+
+PODFILE CHECKSUM: 352a34438be1c5ffbe64a612561e7f412298ac90
+
+COCOAPODS: 1.4.0

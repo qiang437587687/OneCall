@@ -9,7 +9,14 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBAction func leaveChannel(_ sender: UIButton) {
+        AppDelegate.shared.leaveChannel()
+    }
+    @IBAction func joinChannel(_ sender: UIButton) {
+        
+        AppDelegate.shared.joinChannel(channel: "zhangxianqiang1")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
