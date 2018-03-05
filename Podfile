@@ -8,4 +8,5 @@ target 'OneCallEx' do
 	pod 'AVOSCloud' , '8.0.4'
      pod 'AVOSCloudIM', '8.0.4'
      pod 'AgoraAudio_iOS', '2.0.2'
+     pod 'WSProgressHUD'
 end

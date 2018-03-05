@@ -17,19 +17,20 @@ extension AppDelegate:AgoraRtcEngineDelegate {
             agoraKit = AgoraRtcEngineKit.sharedEngine(withAppId: "6331cdb3598b461f98257efd4a62249f", delegate: self)
         }
     }
-    
-    func joinChannel(channel:String) {
+    //*  @return 0 when executed successfully, and return negative value when failed.
+    @discardableResult
+    func joinChannel(channel:String) -> Int {
         
         guard let ag = agoraKit else  {
             print("没初始化")
-            return
+            return -1
         }
         
-        ag.joinChannel(byKey: nil, channelName: channel, info:nil, uid:0) {(sid, uid, elapsed) -> Void in
+        return Int(ag.joinChannel(byKey: nil, channelName: channel, info:nil, uid:0) {(sid, uid, elapsed) -> Void in
             // Joined channel "demoChannel"
             ag.setEnableSpeakerphone(true)
             UIApplication.shared.isIdleTimerDisabled = true
-        }
+        })
     }
     
     func leaveChannel() {

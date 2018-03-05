@@ -13,6 +13,11 @@ import PushKit
 
 let callManager = CallManager()
 var providerDelegate: ProviderDelegate = ProviderDelegate(callManager: callManager)
+var pushcredentials:PKPushCredentials? {
+    didSet{
+        //可能数据在使用之后才进行了设置。 所以这个地方需要注意一下。 后期优化。
+    }
+}
 
 extension AppDelegate {
     
@@ -47,7 +52,6 @@ extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate 
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
         
-        
         print(payload.dictionaryPayload) //接收到推送了。
         print("did konw")
     }
@@ -56,29 +60,30 @@ extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate 
         let token = getMeaningToken(credentials:pushCredentials)
         //打印出token看一下是不是有什么猫腻。
         print("token ====>>> \(token)")
+        pushcredentials = pushCredentials
         //创建ID
-        creatAVIDSaveToCloud(credentials: pushCredentials)
+//        creatAVIDSaveToCloud(credentials: pushCredentials)
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
     }
-
-    
 }
-
 
 extension AppDelegate { //创建方法
     
-    func creatAVIDSaveToCloud(credentials:PKPushCredentials) {
+    func creatAVIDSaveToCloud(credentials:PKPushCredentials,channelUnique:String,completeHandle:@escaping SimpleBoolClosure) {
         let temp = AVInstallation.current()
         //保存对应的installtion
         let insTempString = deleteVoipString(str: temp.objectId ?? "")
         let ins = AVInstallation.init(objectId: insTempString + ConstStrting)
         ins.apnsTopic = "com.zhangxianqiang.onecall.voip"
         ins.setDeviceTokenFrom(credentials.token)
-        ins.saveInBackground()
-        print("objectID")
+        ins.addUniqueObject(channelUnique, forKey: "channels")
+        ins.saveInBackground { (b, e) in
+            completeHandle(b)
+        }
+        print("objectID ====== >")
         print(ins.objectId ?? "")
     }
     
