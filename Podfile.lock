@@ -10,6 +10,7 @@ PODS:
     - AVOSCloudIM/_NOARC (= 8.0.4)
   - AVOSCloudIM/_NOARC (8.0.4):
     - AVOSCloud (= 8.0.4)
+  - HandyJSON (4.0.0-beta.1)
   - Shimmer (1.0.2)
   - WSProgressHUD (1.1.3):
     - Shimmer
@@ -18,15 +19,17 @@ DEPENDENCIES:
   - AgoraAudio_iOS (= 2.0.2)
   - AVOSCloud (= 8.0.4)
   - AVOSCloudIM (= 8.0.4)
+  - HandyJSON (= 4.0.0-beta.1)
   - WSProgressHUD
 
 SPEC CHECKSUMS:
   AgoraAudio_iOS: 5003625255827db33cdd167644aa10df3e5a0e95
   AVOSCloud: 645f20b77cdcc0622a45c663c1a5735a17d1df27
   AVOSCloudIM: 182e93f9e6e3ad165c6fd67d8c01d15f561a7538
+  HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   WSProgressHUD: a0902809c8af112fb34b004fdc75c16eb85167a3
 
-PODFILE CHECKSUM: 959c8d7656dbc889c9ff5ca5a91e4737604c1f7b
+PODFILE CHECKSUM: 23f81a09d4792eee82eda89b85204a9d45d93b4c
 
 COCOAPODS: 1.4.0

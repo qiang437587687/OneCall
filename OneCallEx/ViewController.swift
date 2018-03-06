@@ -68,8 +68,8 @@ class ViewController: UIViewController {
     
     func joinChannel(channel:String) { // 开始加入频道流程、
         
-//        let num =  AppDelegate.shared.joinChannel(channel: channel) //设置过用户有效，开始进入自己的频道
-        let num =  AppDelegate.shared.joinChannel(channel: "tempChannel") //设置过用户有效，开始进入自己的频道
+        let num =  AppDelegate.shared.joinChannel(channel: channel) //设置过用户有效，开始进入自己的频道
+        //let num =  AppDelegate.shared.joinChannel(channel: "tempChannel") //设置过用户有效，开始进入自己的频道
 
         if num == 0 { //加入房间成功，这时候发送推送给对方，让对方也接听了就进入房间。
             let push = AVPush.init()

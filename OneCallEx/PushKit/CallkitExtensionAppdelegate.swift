@@ -10,6 +10,7 @@ import UserNotifications
 import AVOSCloud
 import AVOSCloudIM
 import PushKit
+import HandyJSON
 
 let callManager = CallManager()
 var providerDelegate: ProviderDelegate = ProviderDelegate(callManager: callManager)
@@ -45,7 +46,32 @@ extension AppDelegate {
 }
 
 extension AppDelegate { //电话的接听挂断方法
+    func endCall() {
+        
+        callManager.calls.forEach { (c) in
+            callManager.end(call: c)
+        }
+    }
     
+    
+    func displayIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
+        
+        providerDelegate.reportIncomingCall(uuid: uuid, handle: handle, hasVideo: hasVideo, completion: completion)
+        
+    }
+    
+    func makeACall(handle:String) {
+        
+        let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
+        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
+            
+            print("handle = \(handle)")
+            
+            self.displayIncomingCall(uuid: UUID(), handle: handle, hasVideo: false) { _ in
+                UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
+            }
+        }
+    }
 }
 
 extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate { // 代理方法
@@ -54,19 +80,20 @@ extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate 
         
         print(payload.dictionaryPayload) //接收到推送了。
         print("did konw") //currentTopVc()
+        let dic = payload.dictionaryPayload as NSDictionary
+        let model = PushModel.deserialize(from: dic)
         
         leaveChannel()
-        joinChannel(channel: "tempChannel")
         
-        let alertController = UIAlertController(title: "系统提示",
-                                                message: "您确定要离开hangge.com吗？", preferredStyle: .alert)
-        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "好的", style: .default, handler: {action in
-            print("点击了确定")
-        })
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        currentTopVc().present(alertController, animated: true, completion: nil)
+        tempShowTip(model?.rquestChannel ?? "居然是空的^.^")
+        
+        if model?.rquestChannel.count == 0 {
+            Hud.showError("消息在空中飞丢了")
+        } else {
+//            joinChannel(channel: model!.rquestChannel) //加入频道。
+            makeACall(handle: model!.rquestChannel)
+        }
+        
     }
     
     func pushRegistry(_ registry: PKPushRegistry, didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {
