@@ -53,7 +53,20 @@ extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate 
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
         
         print(payload.dictionaryPayload) //接收到推送了。
-        print("did konw")
+        print("did konw") //currentTopVc()
+        
+        leaveChannel()
+        joinChannel(channel: "tempChannel")
+        
+        let alertController = UIAlertController(title: "系统提示",
+                                                message: "您确定要离开hangge.com吗？", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "好的", style: .default, handler: {action in
+            print("点击了确定")
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        currentTopVc().present(alertController, animated: true, completion: nil)
     }
     
     func pushRegistry(_ registry: PKPushRegistry, didUpdate pushCredentials: PKPushCredentials, for type: PKPushType) {
@@ -73,18 +86,19 @@ extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate 
 extension AppDelegate { //创建方法
     
     func creatAVIDSaveToCloud(credentials:PKPushCredentials,channelUnique:String,completeHandle:@escaping SimpleBoolClosure) {
-        let temp = AVInstallation.current()
+        //let temp = AVInstallation.current()
         //保存对应的installtion
-        let insTempString = deleteVoipString(str: temp.objectId ?? "")
-        let ins = AVInstallation.init(objectId: insTempString + ConstStrting)
+        //let insTempString = deleteVoipString(str: temp.objectId ?? "")
+        let ins = AVInstallation.init(objectId: channelUnique + ConstStrting)
         ins.apnsTopic = "com.zhangxianqiang.onecall.voip"
         ins.setDeviceTokenFrom(credentials.token)
         ins.addUniqueObject(channelUnique, forKey: "channels")
         ins.saveInBackground { (b, e) in
+            if b {print("save success")}
             completeHandle(b)
         }
-        print("objectID ====== >")
-        print(ins.objectId ?? "")
+        print("objectID ====== > \(ins.objectId ?? "")")
+        
     }
     
     func deleteVoipString(str:String) -> String { //毛线方法为了避免leanCloud的bug ，WTF~？

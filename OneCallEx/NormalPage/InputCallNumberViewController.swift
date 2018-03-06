@@ -21,6 +21,10 @@ class InputCallNumberViewController: UIViewController {
         //存储自己的号码和对方的号码
         UserDefaults.standard.set(myCall, forKey: myConstCallString)
         UserDefaults.standard.set(otherCall, forKey: otherConstCallString)
+        
+        self.dismiss(animated: true) {
+            
+        }
     }
     
     override func viewDidLoad() {
