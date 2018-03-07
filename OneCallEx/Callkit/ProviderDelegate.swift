@@ -23,140 +23,170 @@
 import CallKit
 import AVFoundation
 
+enum CallKitBackStatus {
+    case answer
+    case end
+    case hole
+    case error
+}
+
+typealias callStatusBack = (CallKitBackStatus) -> ()
+
 class ProviderDelegate: NSObject {
-  
-  fileprivate let callManager: CallManager
-  fileprivate let provider: CXProvider
-  
-  init(callManager: CallManager) {
-    self.callManager = callManager
-    provider = CXProvider(configuration: type(of: self).providerConfiguration)
     
-    super.init()
+    fileprivate let callManager: CallManager
+    fileprivate let provider: CXProvider
+    fileprivate var statusback :callStatusBack?
     
-    provider.setDelegate(self, queue: nil)
-  }
-    
-  static var providerConfiguration: CXProviderConfiguration {
-    let providerConfiguration = CXProviderConfiguration(localizedName: "小悦助手")
-    
-    providerConfiguration.supportsVideo = true
-    providerConfiguration.maximumCallsPerCallGroup = 1
-    providerConfiguration.supportedHandleTypes = [.phoneNumber]
-    // 只支持 iOS 11 以上啊 ！
-    if #available(iOS 11.0, *) {
-//        providerConfiguration.includesCallsInRecents = false
-    } else {
-        // Fallback on earlier versions
+    init(callManager: CallManager) {
+        self.callManager = callManager
+        provider = CXProvider(configuration: type(of: self).providerConfiguration)
+        
+        super.init()
+        
+        provider.setDelegate(self, queue: nil)
     }
     
-    
-    
-    return providerConfiguration
-  }
-  
-  func reportIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
-    
-    let update = CXCallUpdate()
-    update.remoteHandle = CXHandle(type: .phoneNumber, value: handle)
-    update.hasVideo = hasVideo
-    update.localizedCallerName = handle
-    update.supportsDTMF = false
-    
-    
-    provider.reportNewIncomingCall(with: uuid, update: update) { error in
-      if error == nil {
-        let call = Call(uuid: uuid, handle: handle)
-        self.callManager.add(call: call)
-      }
-      
-      completion?(error as? NSError)
+    static var providerConfiguration: CXProviderConfiguration {
+        let providerConfiguration = CXProviderConfiguration(localizedName: "打一个电话")
+        
+        providerConfiguration.supportsVideo = true
+        providerConfiguration.maximumCallsPerCallGroup = 1
+        providerConfiguration.supportedHandleTypes = [.generic]
+        let pictureData = UIImagePNGRepresentation(UIImage.init(named: "Icon-CallkitShow")!)
+        providerConfiguration.iconTemplateImageData = pictureData
+        // 只支持 iOS 11 以上啊 ！
+        if #available(iOS 11.0, *) {
+            //        providerConfiguration.includesCallsInRecents = false
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        return providerConfiguration
     }
-  }
+    
+    func reportIncomingCall(nickname:String,uuid: UUID, handle: String, hasVideo: Bool = false,  backStatus:@escaping callStatusBack, completion: ((NSError?) -> Void)?) {
+        
+        let update = CXCallUpdate()
+        update.remoteHandle = CXHandle(type: .generic, value: handle)
+        update.hasVideo = hasVideo
+        update.localizedCallerName = nickname
+        update.supportsDTMF = false
+        
+        statusback = backStatus
+        
+        provider.reportNewIncomingCall(with: uuid, update: update) { error in
+            if error == nil {
+                let call = Call(uuid: uuid, handle: handle)
+                self.callManager.add(call: call)
+            }
+            completion?(error as? NSError)
+            
+        }
+    }
 }
 
 // MARK: - CXProviderDelegate
 
 extension ProviderDelegate: CXProviderDelegate {
-  func providerDidReset(_ provider: CXProvider) {
-    stopAudio()
-    
-    for call in callManager.calls {
-      call.end()
+    func providerDidReset(_ provider: CXProvider) {
+        stopAudio()
+        
+        for call in callManager.calls {
+            call.end()
+        }
+        
+        callManager.removeAllCalls()
     }
     
-    callManager.removeAllCalls()
-  }
-  
-  func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
-    guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
-      action.fail()
-      return
-    }
-    
-    configureAudioSession()
-    call.answer()
-    action.fulfill()
-  }
-  
-  func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
-    guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
-      action.fail()
-      return
-    }
-    
-    stopAudio()
-    
-    call.end()
-    action.fulfill()
-    callManager.remove(call: call)
-  }
-  
-  func provider(_ provider: CXProvider, perform action: CXSetHeldCallAction) {
-    guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
-      action.fail()
-      return
-    }
-    
-    call.state = action.isOnHold ? .held : .active
-    
-    if call.state == .held {
-      stopAudio()
-    } else {
-      startAudio()
-    }
-    
-    action.fulfill()
-  }
-  
- // 开始打电话
-  func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
-    let call = Call(uuid: action.callUUID, outgoing: true, handle: action.handle.value)
-    configureAudioSession()
-    
-    call.connectedStateChanged = { [weak self] in
-      guard let strongSelf = self else { return }
-      
-      if case .pending = call.connectedState {
-        strongSelf.provider.reportOutgoingCall(with: call.uuid, startedConnectingAt: nil)
-      } else if case .complete = call.connectedState {
-        strongSelf.provider.reportOutgoingCall(with: call.uuid, connectedAt: nil)
-      }
-    }
-    
-    call.start { [weak self] success in
-      guard let strongSelf = self else { return }
-      
-      if success {
+    func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        configureAudioSession()
+        call.answer()
+        statusback?(.answer) //回传接听的事件
         action.fulfill()
-        strongSelf.callManager.add(call: call)
-      } else {
-        action.fail()
-      }
     }
-  }
-  
-  func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
-    startAudio()
-  }
+    
+    func provider(_ provider: CXProvider, didDeactivate audioSession: AVAudioSession) {
+        
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXSetMutedCallAction) {
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        action.fulfill()
+    }
+    
+    
+    func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        stopAudio()
+        
+        call.end()
+        statusback?(.end) //回传接听的事件
+        
+        action.fulfill()
+        callManager.remove(call: call)
+    }
+    
+    func provider(_ provider: CXProvider, perform action: CXSetHeldCallAction) {
+        guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
+            action.fail()
+            return
+        }
+        
+        call.state = action.isOnHold ? .held : .active
+        
+        if call.state == .held {
+            stopAudio()
+        } else {
+            startAudio()
+        }
+        statusback?(.hole) //回传接听的事件
+        
+        action.fulfill()
+    }
+    
+    
+    // 开始打电话
+    func provider(_ provider: CXProvider, perform action: CXStartCallAction) {
+        let call = Call(uuid: action.callUUID, outgoing: true, handle: action.handle.value)
+        configureAudioSession()
+        
+        call.connectedStateChanged = { [weak self] in
+            guard let strongSelf = self else { return }
+            
+            if case .pending = call.connectedState {
+                strongSelf.provider.reportOutgoingCall(with: call.uuid, startedConnectingAt: nil)
+            } else if case .complete = call.connectedState {
+                strongSelf.provider.reportOutgoingCall(with: call.uuid, connectedAt: nil)
+            }
+        }
+        
+        call.start { [weak self] success in
+            guard let strongSelf = self else { return }
+            
+            if success {
+                action.fulfill()
+                strongSelf.callManager.add(call: call)
+            } else {
+                action.fail()
+            }
+        }
+    }
+    
+    func provider(_ provider: CXProvider, didActivate audioSession: AVAudioSession) {
+        startAudio()
+    }
 }
+

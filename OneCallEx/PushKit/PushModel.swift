@@ -18,10 +18,18 @@ import HandyJSON
  
  */
 
+/*
+ pushEvent = "0" //电话的推送，最开始的推送
+ pushEvent = "1" //挂断电话的推送
+ */
+
 struct PushModel: HandyJSON {
+    
     var rquestChannel:String = ""
     var aps : PushModelAps?
     var version:String = ""
+    
+    var pushEvent:Int?
 }
 
 struct PushModelAps: HandyJSON {

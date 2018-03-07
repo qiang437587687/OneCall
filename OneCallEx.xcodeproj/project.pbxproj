@@ -17,6 +17,7 @@
 		7E11120F204CF3D6008F2E72 /* GlobalConst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E11120E204CF3D6008F2E72 /* GlobalConst.swift */; };
 		7E111211204D17CB008F2E72 /* FLHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E111210204D17CB008F2E72 /* FLHud.swift */; };
 		7E111213204D1843008F2E72 /* FMFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E111212204D1843008F2E72 /* FMFunctions.swift */; };
+		7E63BDFC204FE11F00274A36 /* NetWorkHealper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63BDFB204FE11F00274A36 /* NetWorkHealper.swift */; };
 		7E773349F0D79E00E1E186BA /* Pods_OneCallEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB3811DD0BF51F3E93F15AD /* Pods_OneCallEx.framework */; };
 		C01588A7204A80190001E5F9 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A5204A80190001E5F9 /* Call.swift */; };
 		C01588A8204A80190001E5F9 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A6204A80190001E5F9 /* CallManager.swift */; };
@@ -44,6 +45,7 @@
 		7E11120E204CF3D6008F2E72 /* GlobalConst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConst.swift; sourceTree = "<group>"; };
 		7E111210204D17CB008F2E72 /* FLHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLHud.swift; sourceTree = "<group>"; };
 		7E111212204D1843008F2E72 /* FMFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMFunctions.swift; sourceTree = "<group>"; };
+		7E63BDFB204FE11F00274A36 /* NetWorkHealper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkHealper.swift; sourceTree = "<group>"; };
 		C01588A5204A80190001E5F9 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		C01588A6204A80190001E5F9 /* CallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
 		C01588A9204A80430001E5F9 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 		7E0F15BF2041491400F02244 /* OneCallEx */ = {
 			isa = PBXGroup;
 			children = (
+				7E63BDFA204FE0F900274A36 /* NetWork */,
 				7E11120D204CF3C3008F2E72 /* GlobalConst */,
 				7E111208204CF2A6008F2E72 /* NormalPage */,
 				C01588B6204A91350001E5F9 /* OneCallEx.entitlements */,
@@ -143,6 +146,14 @@
 				7E11120E204CF3D6008F2E72 /* GlobalConst.swift */,
 			);
 			path = GlobalConst;
+			sourceTree = "<group>";
+		};
+		7E63BDFA204FE0F900274A36 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				7E63BDFB204FE11F00274A36 /* NetWorkHealper.swift */,
+			);
+			path = NetWork;
 			sourceTree = "<group>";
 		};
 		C01588A3204A7FCF0001E5F9 /* PushKit */ = {
@@ -337,6 +348,7 @@
 				C01588B2204A82360001E5F9 /* CallkitExtensionAppdelegate.swift in Sources */,
 				7E11120B204CF2CD008F2E72 /* InputCallNumberViewController.swift in Sources */,
 				C01588A7204A80190001E5F9 /* Call.swift in Sources */,
+				7E63BDFC204FE11F00274A36 /* NetWorkHealper.swift in Sources */,
 				7E0F15C12041491400F02244 /* AppDelegate.swift in Sources */,
 				7E111211204D17CB008F2E72 /* FLHud.swift in Sources */,
 				C01588AF204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift in Sources */,
