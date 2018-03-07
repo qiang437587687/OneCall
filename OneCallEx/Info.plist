@@ -28,6 +28,11 @@
 		<string>remote-notification</string>
 		<string>voip</string>
 	</array>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
     <key>NSMicrophoneUsageDescription</key>
     <string>App需要您的同意,才能访问麦克风</string>
 	<key>UILaunchStoryboardName</key>

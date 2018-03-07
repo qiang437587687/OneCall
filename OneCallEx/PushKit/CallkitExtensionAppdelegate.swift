@@ -54,44 +54,59 @@ extension AppDelegate { //电话的接听挂断方法
     }
     
     
-    func displayIncomingCall(uuid: UUID, handle: String, hasVideo: Bool = false, completion: ((NSError?) -> Void)?) {
+    private func displayIncomingCall(nickname:String,uuid: UUID, handle: String, hasVideo: Bool = false,backStatu:@escaping callStatusBack , completion: ((NSError?) -> Void)?) {
         
-        providerDelegate.reportIncomingCall(uuid: uuid, handle: handle, hasVideo: hasVideo, completion: completion)
-        
+        providerDelegate.reportIncomingCall(nickname: nickname, uuid: uuid, handle: handle, hasVideo: hasVideo, backStatus: backStatu, completion: completion)
     }
     
-    func makeACall(handle:String) {
+    func makeACall(nickname:String,handle:String,backStatu:@escaping callStatusBack) {
+        
+        if callManager.calls.count > 0 {
+            Hud.showError("当前正在通话，又来一个电话，肯定是不行的~")
+            return
+        }
         
         let backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler: nil)
-        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1.5) {
-            
+        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now()) {
             print("handle = \(handle)")
-            
-            self.displayIncomingCall(uuid: UUID(), handle: handle, hasVideo: false) { _ in
+            self.displayIncomingCall( nickname:nickname, uuid: UUID(), handle: handle, hasVideo: false,backStatu:backStatu) { _ in
                 UIApplication.shared.endBackgroundTask(backgroundTaskIdentifier)
             }
         }
     }
+    
 }
 
 extension AppDelegate : UNUserNotificationCenterDelegate,PKPushRegistryDelegate { // 代理方法
     
     func pushRegistry(_ registry: PKPushRegistry, didReceiveIncomingPushWith payload: PKPushPayload, for type: PKPushType, completion: @escaping () -> Void) {
         
-        print(payload.dictionaryPayload) //接收到推送了。
-        print("did konw") //currentTopVc()
+//        print(payload.dictionaryPayload) //接收到推送了。
         let dic = payload.dictionaryPayload as NSDictionary
         let model = PushModel.deserialize(from: dic)
         
-        leaveChannel()
-        
         tempShowTip(model?.rquestChannel ?? "居然是空的^.^")
         
-        if model?.rquestChannel.count == 0 {
-            Hud.showError("消息在空中飞丢了")
-        } else {
-//            joinChannel(channel: model!.rquestChannel) //加入频道。
-            makeACall(handle: model!.rquestChannel)
+        if model?.pushEvent == 0 { //打电话
+            
+            let myCall = UserDefaults.standard.object(forKey: myConstCallString) as? String
+            let otherCall = UserDefaults.standard.object(forKey: otherConstCallString) as? String
+            /*
+             本地如果不存在数据那么就不要弹出callkit了,防止重新安装的时候没有登录账号还能打电话。
+             */
+            if confirmString(str: myCall) && confirmString(str: otherCall) {
+                airChannel = model?.rquestChannel ?? "" //如果结束需要一起结束的记录。
+                leaveChannel()
+                encomingCall(model: model)
+            } else {
+                Hud.showMassage("上一次给你打电话的人，依然给你打来了电话。")
+            }
+        }
+        
+        if model?.pushEvent == 1 { //发送挂断信息
+            tempShowTip("电话已经挂断")
+            endCall()
+            leaveChannel()
         }
         
     }
@@ -138,6 +153,46 @@ extension AppDelegate { //创建方法
     }
 }
 
+
+extension AppDelegate { // appdelegate 这个是逻辑处理
+    
+    func encomingCall(model:PushModel?) {
+        if model?.rquestChannel.count == 0 {
+            Hud.showError("消息在空中飞丢了")
+        } else {
+            //            joinChannel(channel: model!.rquestChannel) //加入频道。
+            //            makeACall(nickname: model!.rquestChannel, handle: model!.rquestChannel, backStatu: )
+            makeACall(nickname: model!.rquestChannel, handle: model!.rquestChannel, backStatu: { [unowned self] (status) in
+                
+                switch (status) {
+                case .answer: //这就开始打电话了 ---> 按照原来的逻辑
+                    
+                    let num = self.joinChannel(channel: model!.rquestChannel)
+                    
+                    if num != 0 { //加入房间失败， 通知对方有错误
+                        
+                    }
+                    
+                case .end:
+                    
+                    // 需要发送一个通知给对方告知已经挂断了。
+                    self.leaveChannelNoti()
+                    let num = self.leaveChannel()
+                    if num != 0 { //退出房间失败
+                        
+                    }
+                    
+                case .hole:
+                    print("留空")
+                case .error:
+                    print("error")
+                }
+                
+            })
+        }
+    }
+    
+}
 
 
 

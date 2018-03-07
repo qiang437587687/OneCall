@@ -33,13 +33,22 @@ extension AppDelegate:AgoraRtcEngineDelegate {
         })
     }
     
-    func leaveChannel() {
+    @discardableResult
+    func leaveChannel() -> Int {
         guard let ag = agoraKit else  {
             print("没初始化")
-            return
+            return -100
         }
         
-        ag.leaveChannel { (status) in }
+        let statusNumber = ag.leaveChannel { (status) in }
+        
+        return Int(statusNumber)
+        
+    }
+    
+    func leaveChannelNoti() { //发送离开房间的通知。
+        
+        
         
     }
     
