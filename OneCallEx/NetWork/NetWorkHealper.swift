@@ -11,7 +11,8 @@ import Alamofire
 
 //let mainUrl = "http://onecallex.leancloud.cn"
 //let mainUrl = "http://localhost:3000"
-let mainUrl = "http://192.168.11.234:5000"
+//let mainUrl = "http://192.168.11.234:5000"
+let mainUrl = "http://47.52.116.33:5000"
 
 func sendChannelToOther(_ channel:String,otherChannel:String) { //所有的message都代表着other的频道，
     

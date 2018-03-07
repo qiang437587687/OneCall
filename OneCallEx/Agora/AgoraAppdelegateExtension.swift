@@ -29,7 +29,7 @@ extension AppDelegate:AgoraRtcEngineDelegate {
         return Int(ag.joinChannel(byKey: nil, channelName: channel, info:nil, uid:0) {(sid, uid, elapsed) -> Void in
             // Joined channel "demoChannel"
             ag.setEnableSpeakerphone(true)
-            UIApplication.shared.isIdleTimerDisabled = true
+            UIApplication.shared.isIdleTimerDisabled = false
         })
     }
     
