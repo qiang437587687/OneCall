@@ -40,3 +40,17 @@ func viewForController(view:UIView)->UIViewController?{
     }while next != nil
     return nil
 }
+
+
+func tempShowTip(_ message:String? = "系统提示") {
+    let alertController = UIAlertController(title: message,
+                                            message: "这是个提示消息", preferredStyle: .alert)
+    let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+    let okAction = UIAlertAction(title: "好的", style: .default, handler: {action in
+        print("点击了确定")
+    })
+    alertController.addAction(cancelAction)
+    alertController.addAction(okAction)
+    currentTopVc().present(alertController, animated: true, completion: nil)
+}
+

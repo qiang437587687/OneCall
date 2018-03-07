@@ -27,6 +27,7 @@
 		C01588B2204A82360001E5F9 /* CallkitExtensionAppdelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588B1204A82360001E5F9 /* CallkitExtensionAppdelegate.swift */; };
 		C01588B5204A85D40001E5F9 /* Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588B4204A85D40001E5F9 /* Tools.swift */; };
 		C01588C0204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588BF204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift */; };
+		C07BA80D204EED3F00CDA675 /* PushModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07BA80C204EED3F00CDA675 /* PushModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		C01588B6204A91350001E5F9 /* OneCallEx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneCallEx.entitlements; sourceTree = "<group>"; };
 		C01588BF204ACEF50001E5F9 /* AgoraAppdelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgoraAppdelegateExtension.swift; sourceTree = "<group>"; };
 		C01588C3204AD0770001E5F9 /* OC_Bridge_File.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OC_Bridge_File.h; sourceTree = "<group>"; };
+		C07BA80C204EED3F00CDA675 /* PushModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushModel.swift; sourceTree = "<group>"; };
 		C6ADB4AC86B803B323337D7C /* Pods-OneCallEx.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneCallEx.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx.release.xcconfig"; sourceTree = "<group>"; };
 		EEB3811DD0BF51F3E93F15AD /* Pods_OneCallEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneCallEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -147,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C01588B1204A82360001E5F9 /* CallkitExtensionAppdelegate.swift */,
+				C07BA80C204EED3F00CDA675 /* PushModel.swift */,
 			);
 			path = PushKit;
 			sourceTree = "<group>";
@@ -304,6 +307,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-OneCallEx/Pods-OneCallEx-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloud/AVOSCloud.framework",
 				"${BUILT_PRODUCTS_DIR}/AVOSCloudIM/AVOSCloudIM.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/WSProgressHUD/WSProgressHUD.framework",
 			);
@@ -311,6 +316,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloud.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AVOSCloudIM.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WSProgressHUD.framework",
 			);
@@ -337,6 +344,7 @@
 				C01588AC204A80A00001E5F9 /* ProviderDelegate.swift in Sources */,
 				C01588A8204A80190001E5F9 /* CallManager.swift in Sources */,
 				C01588AA204A80430001E5F9 /* Audio.swift in Sources */,
+				C07BA80D204EED3F00CDA675 /* PushModel.swift in Sources */,
 				7E111213204D1843008F2E72 /* FMFunctions.swift in Sources */,
 				7E11120F204CF3D6008F2E72 /* GlobalConst.swift in Sources */,
 				C01588B5204A85D40001E5F9 /* Tools.swift in Sources */,
