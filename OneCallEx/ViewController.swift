@@ -53,9 +53,36 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        let show = UserDefaults.standard.object(forKey: guideShowExe) as? String
+        
+        if show != "show" {
+            firstGuideView(show:true)
+            UserDefaults.standard.set("show", forKey: guideShowExe)
+        } else {
+            appearProgress()
+        }
+    }
+    
+    func firstGuideView(show:Bool) {
+        
+        if !show { return }
+        
+        let videoPath = Bundle.main.path(forResource: "qidong", ofType: "mp4")
+        //let guideVc = JSGuideController.init(guide: .picture, pictures: ["guide_1","guide_2","guide_3"], videoPath: nil,pushViewController:nav)
+        let guideVc = JSGuideController.init(guide: .video, pictures: nil, videoPath: videoPath,pushViewController:nil)
+        present(guideVc, animated: false) { }
+        
+        guideVc.guideViewFinishClosure = {[unowned self] in
+            self.appearProgress()
+        }
+    }
+    
+    func appearProgress() {
         
         myCall = UserDefaults.standard.object(forKey: myConstCallString) as? String
         otherCall = UserDefaults.standard.object(forKey: otherConstCallString) as? String

@@ -11,7 +11,7 @@ import UIKit
 // const string
 let myConstCallString = "myConstCallString"
 let otherConstCallString = "otherConstCallString"
-
+let guideShowExe = "guideShowExe"
 // globle clousre
 typealias SimpleClosure = () -> ()
 typealias SimpleBoolClosure = (Bool) -> ()

@@ -19,6 +19,9 @@
 		7E111213204D1843008F2E72 /* FMFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E111212204D1843008F2E72 /* FMFunctions.swift */; };
 		7E63BDFC204FE11F00274A36 /* NetWorkHealper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E63BDFB204FE11F00274A36 /* NetWorkHealper.swift */; };
 		7E773349F0D79E00E1E186BA /* Pods_OneCallEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEB3811DD0BF51F3E93F15AD /* Pods_OneCallEx.framework */; };
+		7E8C98392056774C00E10B9D /* JSGuideController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C98362056774C00E10B9D /* JSGuideController.swift */; };
+		7E8C983A2056774C00E10B9D /* JSPresentAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E8C98372056774C00E10B9D /* JSPresentAnimator.swift */; };
+		7E8C983B2056774C00E10B9D /* qidong.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 7E8C98382056774C00E10B9D /* qidong.mp4 */; };
 		C01588A7204A80190001E5F9 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A5204A80190001E5F9 /* Call.swift */; };
 		C01588A8204A80190001E5F9 /* CallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A6204A80190001E5F9 /* CallManager.swift */; };
 		C01588AA204A80430001E5F9 /* Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01588A9204A80430001E5F9 /* Audio.swift */; };
@@ -46,6 +49,9 @@
 		7E111210204D17CB008F2E72 /* FLHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FLHud.swift; sourceTree = "<group>"; };
 		7E111212204D1843008F2E72 /* FMFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMFunctions.swift; sourceTree = "<group>"; };
 		7E63BDFB204FE11F00274A36 /* NetWorkHealper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetWorkHealper.swift; sourceTree = "<group>"; };
+		7E8C98362056774C00E10B9D /* JSGuideController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSGuideController.swift; sourceTree = "<group>"; };
+		7E8C98372056774C00E10B9D /* JSPresentAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSPresentAnimator.swift; sourceTree = "<group>"; };
+		7E8C98382056774C00E10B9D /* qidong.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = qidong.mp4; sourceTree = "<group>"; };
 		C01588A5204A80190001E5F9 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		C01588A6204A80190001E5F9 /* CallManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallManager.swift; sourceTree = "<group>"; };
 		C01588A9204A80430001E5F9 /* Audio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Audio.swift; sourceTree = "<group>"; };
@@ -112,6 +118,7 @@
 		7E0F15BF2041491400F02244 /* OneCallEx */ = {
 			isa = PBXGroup;
 			children = (
+				7E8C98352056774C00E10B9D /* JSGuideview */,
 				7E63BDFA204FE0F900274A36 /* NetWork */,
 				7E11120D204CF3C3008F2E72 /* GlobalConst */,
 				7E111208204CF2A6008F2E72 /* NormalPage */,
@@ -154,6 +161,16 @@
 				7E63BDFB204FE11F00274A36 /* NetWorkHealper.swift */,
 			);
 			path = NetWork;
+			sourceTree = "<group>";
+		};
+		7E8C98352056774C00E10B9D /* JSGuideview */ = {
+			isa = PBXGroup;
+			children = (
+				7E8C98362056774C00E10B9D /* JSGuideController.swift */,
+				7E8C98372056774C00E10B9D /* JSPresentAnimator.swift */,
+				7E8C98382056774C00E10B9D /* qidong.mp4 */,
+			);
+			path = JSGuideview;
 			sourceTree = "<group>";
 		};
 		C01588A3204A7FCF0001E5F9 /* PushKit */ = {
@@ -270,6 +287,7 @@
 				7E0F15C82041491400F02244 /* Assets.xcassets in Resources */,
 				7E11120C204CF2CD008F2E72 /* InputCallNumberViewController.xib in Resources */,
 				7E0F15C62041491400F02244 /* Main.storyboard in Resources */,
+				7E8C983B2056774C00E10B9D /* qidong.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,6 +364,7 @@
 			files = (
 				7E0F15C32041491400F02244 /* ViewController.swift in Sources */,
 				C01588B2204A82360001E5F9 /* CallkitExtensionAppdelegate.swift in Sources */,
+				7E8C983A2056774C00E10B9D /* JSPresentAnimator.swift in Sources */,
 				7E11120B204CF2CD008F2E72 /* InputCallNumberViewController.swift in Sources */,
 				C01588A7204A80190001E5F9 /* Call.swift in Sources */,
 				7E63BDFC204FE11F00274A36 /* NetWorkHealper.swift in Sources */,
@@ -353,6 +372,7 @@
 				7E111211204D17CB008F2E72 /* FLHud.swift in Sources */,
 				C01588AF204A811C0001E5F9 /* NSUserActivity+StartCallConvertible.swift in Sources */,
 				C01588B0204A811C0001E5F9 /* StartCallConvertible.swift in Sources */,
+				7E8C98392056774C00E10B9D /* JSGuideController.swift in Sources */,
 				C01588AC204A80A00001E5F9 /* ProviderDelegate.swift in Sources */,
 				C01588A8204A80190001E5F9 /* CallManager.swift in Sources */,
 				C01588AA204A80430001E5F9 /* Audio.swift in Sources */,
